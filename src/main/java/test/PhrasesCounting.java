@@ -28,7 +28,7 @@ public class PhrasesCounting{
     private boolean showCount = false;
     private boolean showSummary = false;
     private boolean showEmptyMessage = true;
-    private boolean showWordCloud = false;
+//    private boolean showWordCloud = false;
 
     ArrayList<ArrayList<String>> resultArrayList;
 
@@ -44,7 +44,7 @@ public class PhrasesCounting{
         return showCount;
     }
 
-    public boolean isShowWordCloud() {return showWordCloud;}
+//    public boolean isShowWordCloud() {return showWordCloud;}
 
     public boolean isShowSummary() {
         return showSummary;
@@ -69,7 +69,7 @@ public class PhrasesCounting{
 
     //Count the multiple phrases and assign the result to resultArrayList
     public void count() throws Exception {
-        showWordCloud = false;
+//        showWordCloud = false;
 
         if (input.length() > 0) {
             showEmptyMessage = false;
@@ -98,7 +98,7 @@ public class PhrasesCounting{
     //Get the single word counting and assign result to resultArrayList
     public void summarize() throws Exception {
         showSummary = true;
-        showWordCloud = false;
+//        showWordCloud = false;
 
         ArrayList<ArrayList<String>> tempResultArrayList = CountPhrases.countPhrases(input, 1, 1, 1);
 
@@ -155,25 +155,25 @@ public class PhrasesCounting{
     }
 
 
-    public void wordCloud() throws Exception {
+//    public void wordCloud() throws Exception {
 //        showWordCloud = true;
-
-        if (input != null && !input.isEmpty() && !input.trim().equals("") && !input.trim().equals("\n")) {
-            Pattern pattern = Pattern.compile("[,.?!;]");
-            Matcher matcher = pattern.matcher(input);
-            ArrayList<String> totalWords;
-            showWordCloud = true;
-            showEmptyMessage = false;
-            String fixedInput = matcher.replaceAll(" ").toLowerCase();
-            totalWords = new ArrayList<>(Arrays.asList(fixedInput.split("\\s+")));
-
-            final FrequencyAnalyzer frequencyAnalyzer = new FrequencyAnalyzer();
-            frequencyAnalyzer.setWordFrequenciesToReturn(300);
-            frequencyAnalyzer.setMinWordLength(3);
-            frequencyAnalyzer.setStopWords(Collections.EMPTY_LIST);
-
-            final List<WordFrequency> wordFrequencies = frequencyAnalyzer.load(totalWords);
-            final Dimension dimension = new Dimension(700, 700);
+//
+//        if (input != null && !input.isEmpty() && !input.trim().equals("") && !input.trim().equals("\n")) {
+//            Pattern pattern = Pattern.compile("[,.?!;]");
+//            Matcher matcher = pattern.matcher(input);
+//            ArrayList<String> totalWords;
+//            showWordCloud = true;
+//            showEmptyMessage = false;
+//            String fixedInput = matcher.replaceAll(" ").toLowerCase();
+//            totalWords = new ArrayList<>(Arrays.asList(fixedInput.split("\\s+")));
+//
+//            final FrequencyAnalyzer frequencyAnalyzer = new FrequencyAnalyzer();
+//            frequencyAnalyzer.setWordFrequenciesToReturn(300);
+//            frequencyAnalyzer.setMinWordLength(3);
+//            frequencyAnalyzer.setStopWords(Collections.EMPTY_LIST);
+//
+//            final List<WordFrequency> wordFrequencies = frequencyAnalyzer.load(totalWords);
+//            final Dimension dimension = new Dimension(700, 700);
 //            final WordCloud wordCloud = new WordCloud(dimension, CollisionMode.PIXEL_PERFECT);
 //            wordCloud.setPadding(2);
 //            wordCloud.setBackgroundColor(Color.WHITE);
@@ -184,8 +184,8 @@ public class PhrasesCounting{
 //            wordCloud.setFontScalar(new LinearFontScalar(20, 80));
 //            wordCloud.build(wordFrequencies);
 //            wordCloud.writeToFile("web/resources/image/word_count_mickey_head.png");
-        }
-    }
+//        }
+//    }
 
 
 }

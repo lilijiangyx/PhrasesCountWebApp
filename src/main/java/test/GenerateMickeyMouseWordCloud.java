@@ -34,7 +34,7 @@ public class GenerateMickeyMouseWordCloud {
         wordCloud.setBackgroundColor(Color.WHITE);
         wordCloud.setBackground(new PixelBoundryBackground("mickey_head_no_background.png"));
         wordCloud.setColorPalette(new ColorPalette(new Color(0x4055F1), new Color(0x408DF1), new Color(0x40AAF1), new Color(0x40C5F1), new Color(0x40D3F1), new Color(0xFFFFFF)));
-        //wordCloud.setColorPalette(new ColorPalette(Color.RED, Color.PINK, Color.MAGENTA, Color.GRAY, Color.BLACK));
+//        wordCloud.setColorPalette(new ColorPalette(Color.RED, Color.PINK, Color.MAGENTA, Color.GRAY, Color.BLACK));
 //        wordCloudCloud.setColorPalette(new LinearGradientColorPalette(Color.RED, Color.LIGHT_GRAY, Color.BLACK, 30, 30));
         wordCloud.setFontScalar(new LinearFontScalar(20, 80));
         wordCloud.build(wordFrequencies);

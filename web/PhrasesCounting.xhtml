@@ -24,7 +24,7 @@
 
         <br/>
 
-        <h:panelGrid columns="5">
+        <h:panelGrid columns="4">
             <h:outputLabel value="Maximum Phrases Length: "/>
 
             <h:selectOneMenu id="phrasesLengthOptions" value="#{phrases.maximumLength}">
@@ -40,7 +40,6 @@
             </h:selectOneMenu>
             <h:commandButton value="Summary" style="margin-left: 10px" action = "#{phrases.summarize}"/>
             <h:commandButton value="Phrases Count" style="margin-left: 10px" action="#{phrases.count}"/>
-            <h:commandButton value="Word Cloud" style="margin-left: 10px" action="#{phrases.wordCloud}"/>
         </h:panelGrid>
 
         <h:outputText escape="false" style="color:red"
@@ -102,8 +101,6 @@
                 #{p.get(2)}
             </h:column>
         </h:dataTable>
-
-        <h:graphicImage library="image" name="word_count_mickey_head.png" rendered="#{phrases.showWordCloud}"/>
 
 
     </h:form>
