@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <title>Phrases Counting</title>
+</h:head>
+<h:body>
+    <h:form>
+        <!-- Use h:graphicImage -->
+        <h2 style="color:green">Phrases Counting
+            <h:graphicImage name="mickey_head.jpg" library="image" width="40" height="=40"/>
+        </h2>
+
+        <!-- Use text area -->
+        <h:panelGrid columns="1">
+            <h:outputLabel>Text Input:</h:outputLabel>
+            <h:inputTextarea id="textInput"
+                             style="width:800px; height:200px;"
+                             value="#{phrases.input}"/>
+        </h:panelGrid>
+
+        <br/>
+
+        <h:panelGrid columns="5">
+            <h:outputLabel value="Maximum Phrases Length: "/>
+
+            <h:selectOneMenu id="phrasesLengthOptions" value="#{phrases.maximumLength}">
+                <f:selectItem itemValue="10"/>
+                <f:selectItem itemValue="9"/>
+                <f:selectItem itemValue="8"/>
+                <f:selectItem itemValue="7"/>
+                <f:selectItem itemValue="6"/>
+                <f:selectItem itemValue="5"/>
+                <f:selectItem itemValue="4"/>
+                <f:selectItem itemValue="3"/>
+                <f:selectItem itemValue="2"/>
+            </h:selectOneMenu>
+            <h:commandButton value="Summary" style="margin-left: 10px" action = "#{phrases.summarize}"/>
+            <h:commandButton value="Phrases Count" style="margin-left: 10px" action="#{phrases.count}"/>
+            <h:commandButton value="Word Cloud" style="margin-left: 10px" action="#{phrases.wordCloud}"/>
+        </h:panelGrid>
+
+        <h:outputText escape="false" style="color:red"
+                      rendered="#{phrases.showEmptyMessage}"
+                      value="Please enter the input"/>
+
+        <br/>
+        <h:outputStylesheet library="css" name="style_sheet_count_summary.css"  />
+
+
+        <h:dataTable value="#{phrases.summary}" var="s"
+                     rowClasses="oddTableRow, evenTableRow"
+                     columnClasses="setWidthOfFirstColumn,setWidthOfSecondColumn"
+                     headerClass="tableHeader"
+                     styleClass="table"
+                     id="summaryTable"
+                     rendered="#{phrases.showSummary}">
+
+
+            <h:column>
+                <f:facet name="header">Summary</f:facet>
+                #{s[0]}
+            </h:column>
+
+            <h:column>
+                <f:facet name="header"></f:facet>
+                #{s[1]}
+            </h:column>
+        </h:dataTable>
+
+
+        <br/>
+
+        <h:outputStylesheet library="css" name="style_sheet_count_result.css"  />
+
+
+        <h:dataTable value="#{phrases.phrasesCountArrayList}" var="p"
+                     rowClasses="oddTableRow, evenTableRow"
+                     headerClass="tableHeader"
+                     styleClass="table"
+                     id="dataTable"
+                     rendered="#{phrases.showCount}">
+
+
+            <h:column>
+                <f:facet name="header">Phrases</f:facet>
+                #{p.get(0)}
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">
+                    Length
+                </f:facet>
+                #{p.get(1)}
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">Count</f:facet>
+                #{p.get(2)}
+            </h:column>
+        </h:dataTable>
+
+        <h:graphicImage library="image" name="word_count_mickey_head.png" rendered="#{phrases.showWordCloud}"/>
+
+
+    </h:form>
+</h:body>
+
+</html>
